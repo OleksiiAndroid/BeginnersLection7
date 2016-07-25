@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="ua.com.academy.web.lection7.Activity5">
+
+    <item
+        android:id="@+id/menu1"
+        android:orderInCategory="0"
+        android:title="Пункт 1"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu2"
+        android:orderInCategory="1"
+        android:title="Пункт 2"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:orderInCategory="2"
+        android:title="Submenu 1">
+        <menu>
+            <item
+                android:id="@+id/menu3"
+                android:orderInCategory="3"
+                android:title="Пункт 3"
+                app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/menu4"
+                android:orderInCategory="4"
+                android:title="Пункт 4"
+                app:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+</menu>

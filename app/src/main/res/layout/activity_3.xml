@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".Activity3">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show notification 1"
+                android:id="@+id/button"
+                android:onClick="OnClick"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show notification 2"
+                android:id="@+id/button2"
+                android:onClick="OnClick"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show notification 3"
+                android:id="@+id/button3"
+                android:onClick="OnClick"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Close notifications 1, 2, 3"
+                android:id="@+id/button4"
+                android:onClick="OnClick"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show custom notification"
+                android:id="@+id/button5"
+                android:onClick="OnClick"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
