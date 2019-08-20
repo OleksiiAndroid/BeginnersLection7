@@ -8,8 +8,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -28,7 +29,7 @@ public class Activity4 extends AppCompatActivity {
             case R.id.button:
                 new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Toast.makeText(Activity4.this, String.valueOf(hourOfDay) + ":" + String.valueOf(minute), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity4.this, hourOfDay + ":" + minute, Toast.LENGTH_SHORT).show();
                     }
                 }, 0, 0, true).show();
                 break;
@@ -36,7 +37,7 @@ public class Activity4 extends AppCompatActivity {
                 new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        Toast.makeText(Activity4.this, String.valueOf(dayOfMonth) + "." + String.valueOf(monthOfYear + 1) + ":" + String.valueOf(year),
+                        Toast.makeText(Activity4.this, dayOfMonth + "." + monthOfYear + 1 + ":" + String.valueOf(year),
                                 Toast.LENGTH_SHORT).show();
                     }
                 }, 2015, 0, 1).show();

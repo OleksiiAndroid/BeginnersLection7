@@ -1,8 +1,9 @@
 package ua.com.webacademy.beginnerslection7;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,8 +20,8 @@ public class Activity5 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_5);
 
-        TextView textView = (TextView) findViewById(R.id.textView);
-        TextView textView1 = (TextView) findViewById(R.id.textView1);
+        TextView textView = findViewById(R.id.textView);
+        TextView textView1 =  findViewById(R.id.textView1);
 
         registerForContextMenu(textView);
         registerForContextMenu(textView1);

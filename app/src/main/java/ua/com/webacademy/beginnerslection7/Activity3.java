@@ -1,17 +1,22 @@
 package ua.com.webacademy.beginnerslection7;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.RemoteViews;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 public class Activity3 extends AppCompatActivity {
+
+    private static final String CHANNEL_ID = "ua.com.webacademy.beginnerslection7.channel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +30,31 @@ public class Activity3 extends AppCompatActivity {
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+        NotificationCompat.Builder builder;
         Notification notification;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Default channel", NotificationManager.IMPORTANCE_HIGH);
+
+            channel.enableLights(true);
+            channel.enableVibration(true);
+            channel.setLightColor(Color.RED);
+            channel.setShowBadge(true);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+
+            notificationManager.createNotificationChannel(channel);
+
+
+            builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        } else {
+            builder = new NotificationCompat.Builder(this);
+            builder.setDefaults(Notification.DEFAULT_ALL);
+        }
 
         switch (v.getId()) {
             case R.id.button:
-                notification = new NotificationCompat.Builder(this)
+                notification = builder
                         .setAutoCancel(true).setSmallIcon(R.mipmap.ic_launcher)
-                        .setDefaults(Notification.DEFAULT_ALL)
                         .setTicker("Notification 1!")
                         .setContentTitle("Notification title 1")
                         .setContentText("Notification text 1")
@@ -41,9 +64,8 @@ public class Activity3 extends AppCompatActivity {
                 notificationManager.notify(1, notification);
                 break;
             case R.id.button2:
-                notification = new NotificationCompat.Builder(this)
+                notification = builder
                         .setAutoCancel(true).setSmallIcon(R.mipmap.ic_launcher)
-                        .setDefaults(Notification.DEFAULT_ALL)
                         .setTicker("Notification 2!")
                         .setContentTitle("Notification title 2")
                         .setContentText("Notification text 2")
@@ -53,9 +75,8 @@ public class Activity3 extends AppCompatActivity {
                 notificationManager.notify(1, notification);
                 break;
             case R.id.button3:
-                notification = new NotificationCompat.Builder(this)
+                notification = builder
                         .setAutoCancel(true).setSmallIcon(R.mipmap.ic_launcher)
-                        .setDefaults(Notification.DEFAULT_ALL)
                         .setTicker("Notification 3!")
                         .setContentTitle("Notification title 3")
                         .setContentText("Notification text 3")
@@ -67,20 +88,6 @@ public class Activity3 extends AppCompatActivity {
             case R.id.button4:
                 notificationManager.cancel(1);
                 notificationManager.cancel(2);
-                break;
-            case R.id.button5:
-                RemoteViews remoteViews = new RemoteViews(this.getPackageName(), R.layout.notification);
-                remoteViews.setTextViewText(R.id.textView, "Custom notification");
-
-                notification = new NotificationCompat.Builder(this)
-                        .setAutoCancel(true).setSmallIcon(R.mipmap.ic_launcher)
-                        .setDefaults(Notification.DEFAULT_ALL)
-                        .setTicker("Notification!").setContentIntent(pendingIntent)
-                        .build();
-
-                notification.contentView = remoteViews;
-
-                notificationManager.notify(3, notification);
                 break;
         }
     }

@@ -1,7 +1,7 @@
 package ua.com.webacademy.beginnerslection7;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +49,7 @@ public class Activity2 extends AppCompatActivity {
                 LayoutInflater inflater = getLayoutInflater();
                 View view = inflater.inflate(R.layout.toast, null);
 
-                TextView textView = (TextView) view.findViewById(R.id.text);
+                TextView textView =  view.findViewById(R.id.text);
                 textView.setText(R.string.hello_world);
 
                 toast = new Toast(this);
